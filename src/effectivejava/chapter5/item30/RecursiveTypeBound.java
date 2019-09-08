@@ -10,10 +10,10 @@ public class RecursiveTypeBound {
 
         E result = null;
         for (E e : c)
-            if (result == null || e.compareTo(result) > 0)
-                result = Objects.requireNonNull(e);
+            if (e != null && (result == null || e.compareTo(result) > 0))
+                result = e;
 
-        return result;
+        return Objects.requireNonNull(result);
     }
 
     public static void main(String[] args) {
